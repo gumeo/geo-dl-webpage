@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vladimir on geo-DL</title>
+    <link>http://geo-dl.compute.dtu.dk/categories/vladimir/</link>
+    <description>Recent content in Vladimir on geo-DL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://geo-dl.compute.dtu.dk/categories/vladimir/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Journal Club Meeting May 16th</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/3rdmeeting/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/3rdmeeting/</guid>
+      <description>Vladimir presentation Presentation can be downloaded here.
+Vladimir presented the results from the first pointNet paper. The main application is classificaiton and segmentation of point clouds. The method is made to be invariant to the permutations of the points in the pointcloud, i.e. order of the points should not matter.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on geo-DL</title>
+    <link>http://geo-dl.compute.dtu.dk/tags/</link>
+    <description>Recent content in Tags on geo-DL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://geo-dl.compute.dtu.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dl</title>
+      <link>http://geo-dl.compute.dtu.dk/tags/dl/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/tags/dl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gan</title>
+      <link>http://geo-dl.compute.dtu.dk/tags/gan/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/tags/gan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Geo Dl</title>
+      <link>http://geo-dl.compute.dtu.dk/tags/geo-dl/</link>
+      <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/tags/geo-dl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>http://geo-dl.compute.dtu.dk/tags/introduction/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/tags/introduction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Presentation</title>
+      <link>http://geo-dl.compute.dtu.dk/tags/presentation/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/tags/presentation/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

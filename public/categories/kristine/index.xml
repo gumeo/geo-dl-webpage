@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kristine on geo-DL</title>
+    <link>http://geo-dl.compute.dtu.dk/categories/kristine/</link>
+    <description>Recent content in Kristine on geo-DL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://geo-dl.compute.dtu.dk/categories/kristine/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2nd Journal Club Meeting May 2nd</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/2ndmeeting/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/2ndmeeting/</guid>
+      <description>Kristine presentation Presentation can be downloaded here.
+In this meeting Kristine presented the results from the paper Cascade Multi-view Hourglass Model for Robust 3D Face Alignment. This builds on the original hourglass paper. The idea is to have two original hourglass networks trained end to end. The first one creates probability maps for the annotations points, and the second refines the predicitons and reduces variation. The explore several different variants compared to a baseline implementation.</description>
+    </item>
+    
+  </channel>
+</rss>

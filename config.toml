@@ -1,0 +1,25 @@
+baseURL = "http://geo-dl.compute.dtu.dk/"
+languageCode = "en-us"
+title = "geo-DL"
+theme = "hyde-hyde"
+googleAnalytics = "UA-126539062-1"
+[params]
+    description = "Journal club for geometric deep learning"
+
+
+## Main Menu
+[[menu.main]]
+    name = "Posts"
+    weight = 100
+    identifier = "posts"
+    url = "/posts/"
+[[menu.main]]
+    name = "About"
+    identifier = "about"
+    weight = 200
+    url = "/about/"
+[[menu.main]]
+    name = "Paper Pool"
+    identifier = "ppool"
+    weight = 300
+    url = "/papers/"

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rasmus on geo-DL</title>
+    <link>http://geo-dl.compute.dtu.dk/categories/rasmus/</link>
+    <description>Recent content in Rasmus on geo-DL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://geo-dl.compute.dtu.dk/categories/rasmus/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1st Journal Club Meeting</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/1stmeeting/</link>
+      <pubDate>Mon, 30 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/1stmeeting/</guid>
+      <description>Rasmus 1st presentation Presentation can be downloaded here.
+In the first session Rasmus presented results and approaches from the papers Multi-view Convolutional Neural Networks for 3D Shape Recognition and Volumetric and Multi-View CNNs for Object Classification on 3D Data. Both papers are about classification of 3D-shape data, the first one creates multiple different renderings, which are passed through the same CNN and view-pooled. The second paper takes a model and transforms it into a voxalized representation before feeding it into a CNN.</description>
+    </item>
+    
+  </channel>
+</rss>

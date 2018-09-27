@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shihav on geo-DL</title>
+    <link>http://geo-dl.compute.dtu.dk/categories/shihav/</link>
+    <description>Recent content in Shihav on geo-DL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://geo-dl.compute.dtu.dk/categories/shihav/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Synchronized spectral CNN for 3D SHape Segmentation</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/speccnn/</link>
+      <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/speccnn/</guid>
+      <description>Shihav presentation Presentation can be downloaded here.
+In this presenation Shihav presented a different approach compared to the multiview rendering and volumentric representations. The spectral CNN approach (paper) is more focused on local represenation of points in a point cloud or a mesh. The method requires the graph laplacian and works by doing convolution as multiplication in the spectral domain. The in turn also yields a canonical representation of the 3D objects using functional maps.</description>
+    </item>
+    
+  </channel>
+</rss>

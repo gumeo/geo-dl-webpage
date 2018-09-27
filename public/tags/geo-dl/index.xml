@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Geo Dl on geo-DL</title>
+    <link>http://geo-dl.compute.dtu.dk/tags/geo-dl/</link>
+    <description>Recent content in Geo Dl on geo-DL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://geo-dl.compute.dtu.dk/tags/geo-dl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Synchronized spectral CNN for 3D SHape Segmentation</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/speccnn/</link>
+      <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/speccnn/</guid>
+      <description>Shihav presentation Presentation can be downloaded here.
+In this presenation Shihav presented a different approach compared to the multiview rendering and volumentric representations. The spectral CNN approach (paper) is more focused on local represenation of points in a point cloud or a mesh. The method requires the graph laplacian and works by doing convolution as multiplication in the spectral domain. The in turn also yields a canonical representation of the 3D objects using functional maps.</description>
+    </item>
+    
+    <item>
+      <title>Journal Club Meeting May 16th</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/3rdmeeting/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/3rdmeeting/</guid>
+      <description>Vladimir presentation Presentation can be downloaded here.
+Vladimir presented the results from the first pointNet paper. The main application is classificaiton and segmentation of point clouds. The method is made to be invariant to the permutations of the points in the pointcloud, i.e. order of the points should not matter.</description>
+    </item>
+    
+    <item>
+      <title>2nd Journal Club Meeting May 2nd</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/2ndmeeting/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/2ndmeeting/</guid>
+      <description>Kristine presentation Presentation can be downloaded here.
+In this meeting Kristine presented the results from the paper Cascade Multi-view Hourglass Model for Robust 3D Face Alignment. This builds on the original hourglass paper. The idea is to have two original hourglass networks trained end to end. The first one creates probability maps for the annotations points, and the second refines the predicitons and reduces variation. The explore several different variants compared to a baseline implementation.</description>
+    </item>
+    
+    <item>
+      <title>1st Journal Club Meeting</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/1stmeeting/</link>
+      <pubDate>Mon, 30 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/1stmeeting/</guid>
+      <description>Rasmus 1st presentation Presentation can be downloaded here.
+In the first session Rasmus presented results and approaches from the papers Multi-view Convolutional Neural Networks for 3D Shape Recognition and Volumetric and Multi-View CNNs for Object Classification on 3D Data. Both papers are about classification of 3D-shape data, the first one creates multiple different renderings, which are passed through the same CNN and view-pooled. The second paper takes a model and transforms it into a voxalized representation before feeding it into a CNN.</description>
+    </item>
+    
+  </channel>
+</rss>

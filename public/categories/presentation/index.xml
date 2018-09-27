@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Presentation on geo-DL</title>
+    <link>http://geo-dl.compute.dtu.dk/categories/presentation/</link>
+    <description>Recent content in Presentation on geo-DL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://geo-dl.compute.dtu.dk/categories/presentation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Contributing with a presentation</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/howtocont/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/howtocont/</guid>
+      <description>Contributing If you contribute with a presentation, we would very much like to receive a small summary and the presentation file. That way we can use this platform for references in the future.</description>
+    </item>
+    
+  </channel>
+</rss>
