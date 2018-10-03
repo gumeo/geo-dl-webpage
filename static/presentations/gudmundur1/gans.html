@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Geometric Deep Learning   Generative Adversarial Net</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="gans_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="gans_files/reveal.js-3.3.0.1/css/theme/sky.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="custom.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Geometric Deep Learning <br> Generative Adversarial Net</h1>
+    <h2 class="author"><h3>
+Gudmundur Einarsson <br> Technical University of Denmark
+</h3></h2>
+    <h3 class="date">October 3rd 2018</h3>
+</section>
+
+<section id="gans-a-very-hot-topic" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">GANs, a very hot topic!</font></h2>
+<center>
+<img src="figures/ganCite.png" width = "500px"/>
+</center>
+</section>
+<section id="points-i-want-to-try-to-address" class="slide level2">
+<h2>Points I want to try to address</h2>
+<ul>
+<li><p>What is a GAN? <br></p></li>
+<li><p>What are the challenges using GANs? E.g. learning <br></p></li>
+<li><p>Examples of applications <br></p></li>
+<li><p>Why is it interesting for us! <br></p></li>
+<li><p>Check out <strong>iangoodfellow.com</strong> for nice presentations</p></li>
+</ul>
+</section>
+<section id="what-is-the-problem-gans-solve" class="slide level2">
+<h2>What is the problem GANs solve?</h2>
+<ul>
+<li><p>GANs are a way to create very good generative models <br></p></li>
+<li><p>They properly model the data manifold <br></p></li>
+<li>Achieved by using an adversary
+<ul>
+<li>Learns to discriminate between real and generated samples</li>
+<li>Pushes generator to become better</li>
+</ul></li>
+</ul>
+</section>
+<section id="lets-see-the-difference" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Let’s see the difference</font></h2>
+<center>
+<img src="figures/ganNext.png" width = "800px"/>
+</center>
+</section>
+<section id="why-the-hype" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Why the hype?</font></h2>
+<center>
+<img src="figures/ganFaceProc.png" width = "800px"/>
+</center>
+</section>
+<section id="named-gans" class="slide level2">
+<h2>Named GANs</h2>
+<ul>
+<li><p>There are around 500 new GAN paper every month <br></p></li>
+<li><p>Check out the GAN model zoo on github for inspiration <br></p></li>
+<li><p>This is simply too much material to cover <br></p></li>
+<li><p>Focus and stick to the original paper <br></p></li>
+<li><p>If time, look at ganerated hands, as an example application</p></li>
+</ul>
+</section>
+<section id="the-gan-paper" class="slide level2">
+<h2>The GAN paper</h2>
+<ul>
+<li>Basic GAN idea
+<ul>
+<li>Game between <strong>generator</strong> <span class="math inline">\(G\)</span> and <strong>Discriminator</strong> <span class="math inline">\(D\)</span></li>
+<li>Both are generic, in original papers are MLPs</li>
+<li>This generic part is one of the reason for popularity <br></li>
+</ul></li>
+<li><span class="math inline">\(D\)</span> is a differentiable function which discriminates real and generated data, has parameters <span class="math inline">\(\boldsymbol{\theta}^{(D)}\)</span>
+<ul>
+<li><span class="math inline">\(\mathbf{x}\)</span> is the input</li>
+<li><span class="math inline">\(D(\mathbf{x})\)</span> is the probability of sample being real</li>
+<li>Has cost function <span class="math inline">\(J^{(D)}(\boldsymbol{\theta}^{(D)},\boldsymbol{\theta}^{(G)})\)</span> <br></li>
+</ul></li>
+<li><span class="math inline">\(G\)</span> is a differentiable function, has parameters <span class="math inline">\(\boldsymbol{\theta}^{(G)}\)</span>
+<ul>
+<li><span class="math inline">\(\mathbf{z}\)</span> sample from some prior</li>
+<li><span class="math inline">\(G(\mathbf{z})\)</span> gives an <span class="math inline">\(\mathbf{x}\)</span> from <span class="math inline">\(p_{\text{model}}\)</span></li>
+<li><span class="math inline">\(\mathbf{z}\)</span> is very flexible, can inject noise in many places</li>
+<li><ul>
+<li>Has cost function <span class="math inline">\(J^{(G)}(\boldsymbol{\theta}^{(D)},\boldsymbol{\theta}^{(G)})\)</span> <br></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="how-do-we-train-these" class="slide level2">
+<h2>How do we train these?</h2>
+<ul>
+<li><p>Multiple different approaches <br></p></li>
+<li>Simultaneous SGD
+<ul>
+<li>Minibatch from of <span class="math inline">\(\mathbf{x}\)</span> values from dataset</li>
+<li>Minibatch of <span class="math inline">\(\mathbf{z}\)</span> value from model prior <br></li>
+</ul></li>
+<li>Take simultaneous gradient steps
+<ul>
+<li>update <span class="math inline">\(\boldsymbol{\theta}^{(D)}\)</span> to reduce <span class="math inline">\(J^{(D)}\)</span></li>
+<li>update <span class="math inline">\(\boldsymbol{\theta}^{(G)}\)</span> to reduce <span class="math inline">\(J^{(G)}\)</span> <br></li>
+</ul></li>
+<li><p>Can use any gradient base optimization, e.g. Adam</p></li>
+</ul>
+</section>
+<section id="cost-function-for-d" class="slide level2">
+<h2>Cost function for <span class="math inline">\(D\)</span></h2>
+<p><span class="math display">\[
+  J^{(D)}(\boldsymbol{\theta}^{(D)},\boldsymbol{\theta}^{(G)}) = 
+  -\frac{1}{2}\mathbb{E}_{\mathbf{x}\sim p_{\text{data}}}\log D(\mathbf{x}) -\frac{1}{2}\mathbb{E}_{\mathbf{z}}\log (1- D(G(\mathbf{z})))
+\]</span></p>
+<ul>
+<li><p>This is <strong>standard</strong> cross-entropy for binary classifier with a sigmoid output</p></li>
+<li>Trained with two minibatches of data
+<ul>
+<li>One from dataset, the ones</li>
+<li>One generated, the zeroes</li>
+</ul></li>
+</ul>
+</section>
+<section id="cost-function-for-g" class="slide level2">
+<h2>Cost function for <span class="math inline">\(G\)</span></h2>
+<ul>
+<li><p>Here are more choices, simplest is the zero-zum game <span class="math display">\[
+J^{(G)} = -J^{(D)}
+\]</span></p></li>
+<li><p>This allows us to summarize all into one value function <span class="math display">\[
+V\left( \boldsymbol{\theta}^{(D)},\boldsymbol{\theta}^{(G)} \right) = -J^{(D)}\left( \boldsymbol{\theta}^{(D)},\boldsymbol{\theta}^{(G)} \right)
+\]</span></p></li>
+<li><p>This allows us solve a <strong>minimax</strong> proble, which is the solution to zero-sum games <span class="math display">\[
+\boldsymbol{\theta}^{(G)*} = \text{arg} \min_{\boldsymbol{\theta}^{(G)}}\max_{\boldsymbol{\theta}^{(D)}}V\left( \boldsymbol{\theta}^{(D)},\boldsymbol{\theta}^{(G)} \right)
+\]</span></p></li>
+<li><p>Mostly interesting for theoretical analysis</p></li>
+</ul>
+</section>
+<section id="practical-problems-and-other-cost-functions" class="slide level2">
+<h2>Practical problems and other cost functions</h2>
+<ul>
+<li><p>If the discriminator becomes too good, then gradient for the generator vanishes. It gets stuck and we do not see any improvements.</p></li>
+<li><p>Heuristic change, flip target to construct in stead of sign <span class="math display">\[
+J^{(G)} = 
+   -\frac{1}{2}\mathbb{E}_{\mathbf{z}}\log D(G(\mathbf{z}))
+\]</span></p></li>
+<li><p>Generator now maximizes the probability of the discriminator being wrong, instead of minimizing the probability of the discriminator being correct.</p></li>
+<li><p>Can no longer use one single value function</p></li>
+</ul>
+</section>
+<section id="dcgans" class="slide level2">
+<h2>DCGANs</h2>
+<ul>
+<li>Radford et. al 2015
+<ul>
+<li>Deep convolution GANs</li>
+</ul></li>
+<li>Three new key insights
+<ul>
+<li>Batch normalization, in both <span class="math inline">\(G\)</span> and <span class="math inline">\(D\)</span>, normalize the two minibatches seperately</li>
+<li>Based on the <strong>all-convolutional net</strong> (Springenberg et. al 2015), for increasing spatial dimension we use transposed convolution with stride greater than 1.</li>
+<li>They use Adam instead of SGD with momentum.</li>
+</ul></li>
+</ul>
+</section>
+<section id="tips-and-tricks" class="slide level2">
+<h2>Tips and tricks</h2>
+<ul>
+<li>Train with labels
+<ul>
+<li>Make the discriminator recognize specific classes of objects</li>
+</ul></li>
+<li>One-sided label smoothing
+<ul>
+<li>Change the ones to <span class="math inline">\(0.9\)</span></li>
+</ul></li>
+<li>Virtual batch normalization
+<ul>
+<li>Use a reference batch, sample at beginning, and current batch to estimate normalization values.</li>
+<li>Otherwise the two different minibatches cause too much fluctuation in the normalization parameters.</li>
+</ul></li>
+<li>In practice, <span class="math inline">\(D\)</span> is usually deeper, more filters per layer</li>
+</ul>
+</section>
+<section id="example-use-case-cvpr-2018" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Example use case, CVPR 2018</font></h2>
+<center>
+<img src="figures/handTrack.png" width = "800px"/>
+</center>
+</section>
+<section id="whole-pipeline" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Whole Pipeline</font></h2>
+<center>
+<img src="figures/handArch.png" width = "800px"/>
+</center>
+</section>
+<section id="geocongan" class="slide level2">
+<h2>GeoConGan</h2>
+<ul>
+<li><p>Image to image translation network</p></li>
+<li><p>Translate synthetic images to realistic looking images</p></li>
+<li><p>We have ground truth annotations for synthetic data, they just don’t look real enough</p></li>
+</ul>
+</section>
+<section id="generating-realistic-hands" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Generating realistic hands</font></h2>
+<center>
+<img src="figures/handSynth.png" width = "800px"/>
+</center>
+</section>
+<section id="geometric-consistency-important-for-consistent-annotations" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Geometric Consistency, important for consistent annotations</font></h2>
+<center>
+<img src="figures/geoCon.png" width = "800px"/>
+</center>
+</section>
+<section id="see-in-action" class="slide level2">
+<h2>See in action</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pHyNrYRhvSg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+</section>
+<section id="what-do-the-authors-release" class="slide level2">
+<h2>What do the authors release?</h2>
+<ul>
+<li><p>Implementation in caffe</p></li>
+<li><p>Heatmaps are 128 by 128</p></li>
+<li><p>Only release forward pass for tracking</p></li>
+</ul>
+</section>
+<section id="issues-for-gans" class="slide level2">
+<h2>Issues for GANs</h2>
+<ul>
+<li><p>GANs are not the holy grail of deep learning</p></li>
+<li><p>They have some very hard problems to solve</p></li>
+</ul>
+</section>
+<section id="issues-how-to-evaluate-performance" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Issues, how to evaluate performance?</font></h2>
+<p><font color="black">Samples from <em>LARGE SCALE GAN TRAINING FOR HIGH FIDELITY NATURAL IMAGE SYNTHESIS</em></font></p>
+<center>
+<img src="figures/ganSamples.png" width = "800px"/>
+</center>
+</section>
+<section id="are-these-just-look-ups-from-the-training-data" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Are these just look ups from the training data?</font></h2>
+<center>
+<img src="figures/im1.png" width = "800px"/>
+</center>
+</section>
+<section id="are-these-just-look-ups-from-the-training-data-1" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Are these just look ups from the training data?</font></h2>
+<center>
+<img src="figures/im2.png" width = "800px"/>
+</center>
+</section>
+<section id="are-these-just-look-ups-from-the-training-data-2" class="slide level2" data-background-color="#ffffff">
+<h2><font color="black">Are these just look-ups from the training data?</font></h2>
+<center>
+<img src="figures/im3.png" width = "800px"/>
+</center>
+</section>
+<section id="future-paper-to-look-into" class="slide level2">
+<h2>Future paper to look into</h2>
+<ul>
+<li><p>More examples where gans are used to synthesize training data</p></li>
+<li><p>Cycle gans, maybe info GAN</p></li>
+<li><p>Focus on more high resolution image generation</p></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="gans_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="gans_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
