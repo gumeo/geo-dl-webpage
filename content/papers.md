@@ -54,3 +54,5 @@ The following list is the pool of papers under consideration for future lectures
 * [Cascade Multi-view Hourglass Model for Robust 3D Face Alignment](https://ibug.doc.ic.ac.uk/media/uploads/documents/fg2018_3dalignment.pdf) (Kristine)
 * [Multi-view Convolutional Neural Networks for 3D Shape Recognition](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Su_Multi-View_Convolutional_Neural_ICCV_2015_paper.pdf) (Rasmus)
 * [Volumetric and Multi-View CNNs for Object Classification on 3D Data](http://openaccess.thecvf.com/content_cvpr_2016/papers/Qi_Volumetric_and_Multi-View_CVPR_2016_paper.pdf) (Rasmus)
+* [Generative Adversarial Nets](http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf) (Gudmundur)
+* [Unpaired image-to-image translation using cycle-consistent adversarial networks](http://openaccess.thecvf.com/content_ICCV_2017/papers/Zhu_Unpaired_Image-To-Image_Translation_ICCV_2017_paper.pdf) (Gudmundur)

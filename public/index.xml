@@ -6,10 +6,20 @@
     <description>Recent content on geo-DL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://geo-dl.compute.dtu.dk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cycle GANs</title>
+      <link>http://geo-dl.compute.dtu.dk/posts/cyclegan/</link>
+      <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://geo-dl.compute.dtu.dk/posts/cyclegan/</guid>
+      <description>Gudmundur presentation The presentation can be found here.
+In the presentation I went into the fundamental ideas behind cycle GANs and what they can be used for, most notable image to image translation and image synthesis. There are few notable things about the cycle GAN paper, one of the main is how well all the major ideas are presented. The paper is a joy to read, and if you have not read it already, I highly recommend it.</description>
+    </item>
     
     <item>
       <title>Introduction to GANs</title>
@@ -76,7 +86,7 @@ In the first session Rasmus presented results and approaches from the papers Mul
       <pubDate>Wed, 10 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>http://geo-dl.compute.dtu.dk/about/</guid>
-      <description>IACG Journal club for geometric deep learning This journal club is organized by Associate Professor Rasmus R. Paulsen and Postdoctoral researcher Gudmundur Einarsson. Our aim is to strengthen the internal knowledge of the cutting edge research in geometric deep learning. The current aim and format is to have weekly meetings where one of the participants reviews and presents a paper on (or related to) geometric deep learning. The summary of the presentation will be added here as a blog post, we will also keep a pool of papers for future presentations.</description>
+      <description>IACG Journal club for geometric deep learning This journal club is organized by Associate Professor Rasmus R. Paulsen and Gudmundur Einarsson (Now alumni). Our aim is to strengthen the internal knowledge of the cutting edge research in geometric deep learning. The current aim and format is to have weekly meetings where one of the participants reviews and presents a paper on (or related to) geometric deep learning. The summary of the presentation will be added here as a blog post, we will also keep a pool of papers for future presentations.</description>
     </item>
     
     <item>

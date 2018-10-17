@@ -1,0 +1,131 @@
+---
+title: "Geometric Deep Learning <br> Cycle GANS"
+author: "<h3>Gudmundur Einarsson <br> Technical University of Denmark</h3>"
+date: "October 17th 2018"
+output: 
+  revealjs::revealjs_presentation:
+    highlight: espresso
+    theme: sky
+    self_contained: false
+    css: ./custom.css
+    fig_caption: yes
+    reveal_options:
+      slideNumber: true
+      previewLinks: true
+---
+  
+## <font color="black">cycle GANs, solves im2im translation!</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/cite.png" width = "500px"/></center>
+
+## <font color="black">They solve it impressively</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/frontpage.png" width = "900px"/></center>
+
+## <font color="black">Some of this has been done before (2001)</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/imAn.png" width = "900px"/></center>
+
+## What is different for image to image translation?
+
+- More **general**, not just style transfer
+
+- Create and estimate correspondance between two high dimensional distributions
+
+- But why is it so big an popular? 
+
+- We do not need matching samples!
+
+- Opens up possibilities for image synthesis
+
+## <font color="black">Non-paired samples</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/paired.png" width = "900px"/></center>
+
+## Why not use GANs?
+
+- We could use a GAN to generate image in other domain and have a discriminator tell if it was generated or not.
+
+- In theory this could work
+
+- In practice it doesn't
+
+- GANs alone do not guarantee that things pair up in meaningful ways, inifinitely many mappings that achieve the same thing.
+
+- Very prone to mode collapse, where everything is mapped to the same thing.
+
+## <font color="black">Cyclic Consistency</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/cyclic.png" width = "900px"/></center>
+
+## <font color="black">GAN loss</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/ganloss.png" width = "900px"/></center>
+
+## <font color="black">Cyclic loss, forward and backward</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/cyclicloss.png" width = "900px"/></center>
+
+## <font color="black">How consistent is this?</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/cons.png" width = "600px"/></center>
+
+## <font color="black">Full loss</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/fullloss.png" width = "600px"/></center>
+
+## <font color="black">Paper that inspired Generator Architecture</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/generator.png" width = "900px"/></center>
+
+## Generator details
+
+- Good for neural style transfer and super resolution
+
+- Two stride-2 convolutions
+
+- Several residual blocks
+
+- Two fractionally strided convolutions, with stride $0.5$
+
+- 6 blocks for $128\times 128$, 9 for higher res
+
+- Use instance normalization
+
+## Discriminator details
+
+- Use $70 \times 70$ patchGANs
+
+- Sample overlapping patches from generated and real
+
+- Scales to larger output automatically
+
+- Has fewer parameters than a full image discriminator
+
+## <font color="black">Mechanical Turk Results</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/results.png" width = "900px"/></center>
+
+## <font color="black">Failure Cases</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/fail.png" width = "900px"/></center>
+
+## Main author has another great paper!
+
+- Image-to-image translation with conditional adversarial networks
+
+- CVPR 2017
+
+- More cited than cycle GAN, a bit different idea
+
+## <font color="black">condGAN</font> {data-background-color="#ffffff"}  
+
+<center><img src="./figures/condGAN.png" width = "900px"/></center>
+
+## Other cool recent stuff by these guys
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/S1OwOd-war8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+## Awesome new thing
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YRb0XAnUpIk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
